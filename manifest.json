@@ -1,6 +1,6 @@
 {
-  "name": "figmaPluginBoilterTemplate",
-  "id": "1160513606824421283",
+  "name": "mangoThemeMaker",
+  "id": "1160513606824421282",
   "api": "1.0.0",
   "main": "dist/plugin.js",
   "editorType": ["figma", "figjam"],

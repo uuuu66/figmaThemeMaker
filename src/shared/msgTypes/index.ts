@@ -1,4 +1,4 @@
 export const Types = {
-  EX: "EX",
+  FLATTEN: "FLATTEN",
   CLOSE_UI: "CLOSE_UI",
 };

@@ -5,16 +5,15 @@ import { postWindowMessage } from "../shared/utils";
 import Button from "./components/Button";
 
 const App: React.FC = () => {
-  const handleClickButton = () => {
+  const handleClickFlattenButton = () => {
     const exMsg: MessageType<{}> = {
-      type: Types.EX,
+      type: Types.FLATTEN,
     };
-    console.log("click Button");
     postWindowMessage(exMsg);
   };
   return (
     <div>
-      <Button onClick={handleClickButton}>하이</Button>
+      <Button onClick={handleClickFlattenButton}>다듬기</Button>
     </div>
   );
 };
