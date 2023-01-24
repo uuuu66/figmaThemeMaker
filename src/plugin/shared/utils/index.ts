@@ -7,27 +7,31 @@ export const getTarget = (
   args: GetTargetArgs
 ): (SliceNode | SceneNode | Node)[] => {
   const { nodeId, returnValue, target } = args;
-  const frameNode = figma.getNodeById(nodeId) as FrameNode;
+  if (figma.getNodeById(nodeId).type === "RECTANGLE") {
+    returnValue.push(figma.getNodeById(nodeId) as RectangleNode);
+  } else {
+    const frameNode = figma.getNodeById(nodeId) as FrameNode;
 
-  for (let i = 0; i < frameNode.children?.length; i += 1) {
-    const nowChild = frameNode.children[i];
-    switch (nowChild.type) {
-      case target:
-        returnValue.push(nowChild);
-        break;
-      case "INSTANCE":
-      case "COMPONENT_SET":
-      case "COMPONENT":
-      case "FRAME":
-      case "GROUP":
-        getTarget({
-          nodeId: nowChild.id,
-          returnValue,
-          target,
-        });
+    for (let i = 0; i < frameNode.children?.length; i += 1) {
+      const nowChild = frameNode.children[i];
+      switch (nowChild.type) {
+        case target:
+          returnValue.push(nowChild);
+          break;
+        case "INSTANCE":
+        case "COMPONENT_SET":
+        case "COMPONENT":
+        case "FRAME":
+        case "GROUP":
+          getTarget({
+            nodeId: nowChild.id,
+            returnValue,
+            target,
+          });
 
-      default:
-        break;
+        default:
+          break;
+      }
     }
   }
   return returnValue;
@@ -97,4 +101,17 @@ export const rgbToHex = (args: RGB) => {
       })
       .join("")
   );
+};
+export const hexToRGB = (code: string) => {
+  if (code.length != 6) {
+    throw "Only six-digit hex colors are allowed.";
+  }
+
+  var aRgbHex = code.match(/.{1,2}/g);
+  var aRgb = [
+    parseInt(aRgbHex[0], 16) / 255,
+    parseInt(aRgbHex[1], 16) / 255,
+    parseInt(aRgbHex[2], 16) / 255,
+  ];
+  return aRgb;
 };

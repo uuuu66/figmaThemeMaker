@@ -26,6 +26,7 @@ export const StyledButton = styled.button<Props>`
   align-items: center;
   justify-content: center;
   line-height: 24px;
+  word-break: keep-all;
   ${({ size, type, disabled }) => {
     switch (size) {
       case "large":
@@ -41,8 +42,9 @@ export const StyledButton = styled.button<Props>`
         `;
       case "small":
         return `
-          padding: 12px 16px;
+        padding:2px 5px;
         font-size:14px;
+        line-height:14px;
         `;
 
       default:

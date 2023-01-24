@@ -5,11 +5,11 @@
     "typeRoots": [
       "./node_modules/@types",
       "./node_modules/@figma",
-      "src/@types"
+      "src/custom.d.ts"
     ],
     "jsx": "react",
     "esModuleInterop": true,
     "moduleResolution": "node"
   },
-  "include": ["src/**/*", "@types", "paths.js"]
+  "include": ["src/**/*", "src/custom.d.ts", "paths.js"]
 }
