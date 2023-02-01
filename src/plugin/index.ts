@@ -104,11 +104,10 @@ figma.ui.onmessage = async (msg: MessageType<any>) => {
           newFrame.appendChild(cardFrame);
         }
       }
-
+      newFrame.x = figma.viewport.center.x;
+      newFrame.y = figma.viewport.center.y;
       newFrame.resizeWithoutConstraints(width, 400);
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   }
 };
 const clone = (val) => {
