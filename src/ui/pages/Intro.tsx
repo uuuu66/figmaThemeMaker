@@ -24,7 +24,7 @@ const Intro: React.FC<PageProps> = ({ setPage, page }) => {
   };
   return (
     <Layout>
-      <Title>mango's 테마 생성기</Title>
+      <Title>~</Title>
       <ButtonWrapper>
         <Button onClick={handleClickCreateButton}>새로 생성하기</Button>
         <Button disabled onClick={handleClickFlattenButton}>

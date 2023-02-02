@@ -4,6 +4,7 @@ import { themeTypes } from "../../../shared/constants";
 import { ThemeType } from "../../../shared/enums";
 import { DataListType, PageProps } from "../../../shared/interfaces";
 import { translateThemeType } from "../../../shared/utils";
+import Box from "../../components/Box";
 import Select from "../../components/Select";
 import Color from "./Color";
 
@@ -26,7 +27,8 @@ const Make: React.FC<PageProps> = () => {
           datas={themeTypes}
           value={themeType}
           onChange={handleChangeThemeType}
-        />
+        />{" "}
+        <Box style={{ top: "0", left: 0, position: "relative" }} />
       </OneRow>
       <StyledMakingAreaWrapper>
         <h1>{translateThemeType(themeType)}</h1>

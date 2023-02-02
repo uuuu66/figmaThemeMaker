@@ -105,7 +105,7 @@ figma.ui.onmessage = async (msg: MessageType<any>) => {
         }
       }
 
-      newFrame.resizeWithoutConstraints(width, height);
+      newFrame.resizeWithoutConstraints(width, height * 2);
       newFrame.x = figma.viewport.center.x - width / 2;
       newFrame.y = figma.viewport.center.y;
       if (figma.currentPage.selection) {

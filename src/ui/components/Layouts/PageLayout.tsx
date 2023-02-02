@@ -34,6 +34,9 @@ const StyledPageLayout = styled.div`
   justify-content: center;
   padding: 12px 24px;
   position: relative;
+  overflow: hidden;
+  height: 100vh;
+  z-index: 100;
 `;
 const StyledHeader = styled.div<{ isHover: boolean }>`
   position: absolute;
