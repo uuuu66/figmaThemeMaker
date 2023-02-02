@@ -3,7 +3,7 @@ import { Types } from "../shared/msgTypes";
 import { CreateColorMsgValue } from "../ui/pages/Make/Color";
 import { getRectangleColor, getTarget, hexToRGB } from "./shared/utils";
 
-figma.showUI(__html__, { width: 1000, height: 800 });
+figma.showUI(__html__, { width: 800, height: 600 });
 
 figma.ui.onmessage = async (msg: MessageType<any>) => {
   if (msg.type === Types.FLATTEN) {
@@ -105,7 +105,15 @@ figma.ui.onmessage = async (msg: MessageType<any>) => {
         }
       }
 
-      newFrame.resizeWithoutConstraints(width, 400);
+      newFrame.resizeWithoutConstraints(width, height);
+      newFrame.x = figma.viewport.center.x - width / 2;
+      newFrame.y = figma.viewport.center.y;
+      if (figma.currentPage.selection) {
+        const selection = figma.getNodeById(figma.currentPage.selection[0].id);
+        if (selection.type === "GROUP")
+          (selection as GroupNode).appendChild(newFrame);
+      }
+      figma.closePlugin();
     } catch (err) {
       console.log(err);
     }
